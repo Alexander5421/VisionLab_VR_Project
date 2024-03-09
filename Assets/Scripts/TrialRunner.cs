@@ -131,10 +131,12 @@ public class TrialRunner:MonoBehaviour
     {
         ClearStimuli();
         // first decide 2D or 3D
-        bool is3D = Random.Range(0, 2) == 1;
+        // bool is3D = Random.Range(0, 2) == 1;
+        bool is3D = true;
         var realCandidatePosition = is3D ? candidatePosition : candidatePosition2D;
         int totalStimuli = Random.Range(realCandidatePosition.Length-2,realCandidatePosition.Length+1);
         // from candidatePosition array, randomly select totalStimuli and create a new array
+        
         
         Transform[] stimuliPositions=realCandidatePosition.ToList().OrderBy(arg => Guid.NewGuid()).Take(totalStimuli).ToArray();
         
