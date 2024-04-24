@@ -57,7 +57,7 @@ namespace EyeTracking
                 // OpenXR always uses World space.
                 pointerLocalOffset = Quaternion.Inverse(transform.rotation) * pointerLocalOffset;
                 // if looking forward, the pointerLocalOffset is (0, 0, 1)
-                print(direction);
+                //print(direction);
             }
             
             /// 2. Calculate the pointer position in "world" space.

@@ -5,13 +5,27 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4320983463246533678, guid: a1628d832fa92a546899f954c2ceaec0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756261535488506510, guid: a1628d832fa92a546899f954c2ceaec0,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 4756261535488506510, guid: a1628d832fa92a546899f954c2ceaec0,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756261535488506510, guid: a1628d832fa92a546899f954c2ceaec0,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4756261535488506510, guid: a1628d832fa92a546899f954c2ceaec0,
         type: 3}
@@ -21,7 +35,7 @@ PrefabInstance:
     - target: {fileID: 4756261535488506510, guid: a1628d832fa92a546899f954c2ceaec0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4756261535488506510, guid: a1628d832fa92a546899f954c2ceaec0,
         type: 3}
@@ -66,15 +80,22 @@ PrefabInstance:
     - target: {fileID: 4756261535488506510, guid: a1628d832fa92a546899f954c2ceaec0,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806256233448656089, guid: a1628d832fa92a546899f954c2ceaec0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5811285901139742520, guid: a1628d832fa92a546899f954c2ceaec0,
         type: 3}
       propertyPath: m_Name
       value: Distraction
       objectReference: {fileID: 0}
+    - target: {fileID: 5947224497270385274, guid: a1628d832fa92a546899f954c2ceaec0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1628d832fa92a546899f954c2ceaec0, type: 3}
