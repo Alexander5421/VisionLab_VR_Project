@@ -15,6 +15,8 @@ public class TrialRunner:MonoBehaviour
         right
     }
     public Stimulus targetPrefab;
+    public Stimulus distractionPrefab1;
+    public Stimulus distractionPrefab2;
     public Stimulus distractionPrefab;
     public Stimulus targetPrefab2D;
     public Stimulus distractionPrefab2D;
@@ -34,7 +36,8 @@ public class TrialRunner:MonoBehaviour
     private float cooldown;
     [SerializeField]
     private CSVLogger csvLogger;
-    
+    private System.Random rand = new System.Random();
+
 
     public void Awake()
     {
@@ -84,6 +87,14 @@ public class TrialRunner:MonoBehaviour
 
     private void NewRun()
     {
+        int randomValue = rand.Next(2);
+        if (randomValue == 0)
+        {
+            distractionPrefab = distractionPrefab1;
+        } else
+        {
+            distractionPrefab = distractionPrefab2;
+        }
         if (currRunIndex < totalRunCount)
         {
             StartNewRun();

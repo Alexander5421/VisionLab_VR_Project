@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private UIManager uiManager;
     [SerializeField] private TrialRunner runner;
-    [SerializeField] private int practiceCount = 3;
-    [SerializeField] private int experimentCount = 6;
+    [SerializeField] private int practiceCount;
+    [SerializeField] private int experimentCount;
     private GameState currState;
 
     // Start is called before the first frame update
