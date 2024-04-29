@@ -87,14 +87,6 @@ public class TrialRunner:MonoBehaviour
 
     private void NewRun()
     {
-        int randomValue = rand.Next(2);
-        if (randomValue == 0)
-        {
-            distractionPrefab = distractionPrefab1;
-        } else
-        {
-            distractionPrefab = distractionPrefab2;
-        }
         if (currRunIndex < totalRunCount)
         {
             StartNewRun();
@@ -143,9 +135,24 @@ public class TrialRunner:MonoBehaviour
         ClearStimuli();
         // first decide 2D or 3D
         // bool is3D = Random.Range(0, 2) == 1;
+
+        int randomValue = rand.Next(2);
+        if (randomValue == 0)
+        {
+            distractionPrefab = distractionPrefab1;
+        }
+        else
+        {
+            distractionPrefab = distractionPrefab2;
+        }
+        int[] possibleStimuliCount = { 1, 5, 10, 20 };
+        int randomIndex = rand.Next(possibleStimuliCount.Length);
+        int totalStimuli = possibleStimuliCount[randomIndex];
+        print(totalStimuli);
+
         bool is3D = true;
         var realCandidatePosition = is3D ? candidatePosition : candidatePosition2D;
-        int totalStimuli = Random.Range(realCandidatePosition.Length-2,realCandidatePosition.Length+1);
+        //int totalStimuli = Random.Range(realCandidatePosition.Length-2,realCandidatePosition.Length+1);
         // from candidatePosition array, randomly select totalStimuli and create a new array
         
         
