@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIManager uiManager;
     [SerializeField] private TrialRunner runner;
     [SerializeField] private int practiceCount;
-    [SerializeField] private int experimentCount;
+    [SerializeField] private int trialID;
     private GameState currState;
 
     // Start is called before the first frame update
@@ -36,15 +36,16 @@ public class GameManager : MonoBehaviour
     }
     public void ExperimentStart()
     {
+        print("Experiment Start");
         uiManager.HideTransitionMenu();
-        runner.InitializeTrials(experimentCount,"experiment");
+        runner.InitializeTrials(trialID * 14,"experiment");
         runner.finish += GameFinish;
     }
     private void GameFinish()
     {
         currState  = GameState.End;
         uiManager.ShowEndMenu(runner.score);
-        print($"GameFinish+ {runner.score}/{experimentCount}");
+        print($"GameFinish+ {runner.score}/{trialID}");
     }
 
     // Update is called once per frame

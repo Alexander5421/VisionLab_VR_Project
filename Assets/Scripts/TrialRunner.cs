@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -37,15 +38,50 @@ public class TrialRunner:MonoBehaviour
     [SerializeField]
     private CSVLogger csvLogger;
     private System.Random rand = new System.Random();
-
+    public List<(int, int, int)> ExperimentCombinations = new List<(int, int, int)>();
 
     public void Awake()
     {
-        this.enabled = false; 
+        this.enabled = false;
+        InitilizeExperimentCombinations();
         // create a new file
         string fileName = $"{DateTime.Now:yyyy-MM-dd-HH-mm-ss}";
         csvLogger.Initialize(fileName);
         InitializeInputs();
+    }
+
+    public void InitilizeExperimentCombinations()
+    {
+        ExperimentCombinations.Add((1, 0, 0));
+        ExperimentCombinations.Add((1, 1, 0));
+
+        ExperimentCombinations.Add((5, 0, 0));
+        ExperimentCombinations.Add((5, 0, 1));
+        ExperimentCombinations.Add((5, 1, 0));
+        ExperimentCombinations.Add((5, 1, 1));
+
+        ExperimentCombinations.Add((10, 0, 0));
+        ExperimentCombinations.Add((10, 0, 1));
+        ExperimentCombinations.Add((10, 1, 0));
+        ExperimentCombinations.Add((10, 1, 1));
+
+        ExperimentCombinations.Add((20, 0, 0));
+        ExperimentCombinations.Add((20, 0, 1));
+        ExperimentCombinations.Add((20, 1, 0));
+        ExperimentCombinations.Add((20, 1, 1));
+    }
+
+    public static void Shuffle<T>(List<T> list)
+    {
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = Random.Range(0, n + 1);
+            T value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
     }
 
     public void InitializeTrials(int totalCount,string trialType)
@@ -66,13 +102,13 @@ public class TrialRunner:MonoBehaviour
         userInput.gameplay.Left.performed += ctx =>
         {
             ReceiveInput(false);
-            print("input received");
+            //print("input received");
         };
 
         userInput.gameplay.Right.performed += ctx =>
         {
             ReceiveInput(true);
-            print("input received");
+            //print("input received");
         };
     }
 
@@ -87,9 +123,16 @@ public class TrialRunner:MonoBehaviour
 
     private void NewRun()
     {
+
+        if (currRunIndex % 14 ==0)
+        {
+            Shuffle(ExperimentCombinations);
+            print("New trial");
+        }
+
         if (currRunIndex < totalRunCount)
         {
-            StartNewRun();
+            StartNewRun(ExperimentCombinations[currRunIndex%14].Item1, ExperimentCombinations[currRunIndex%14].Item2, ExperimentCombinations[currRunIndex%14].Item3);
         }
         else
         {
@@ -130,14 +173,13 @@ public class TrialRunner:MonoBehaviour
     }
 
 
-    private void StartNewRun()
+    private void StartNewRun(int count, int hand, int color)
     {
+        print("Total Stimuli " + count + "  stimuli hand " + hand + " distracion color " + color );
         ClearStimuli();
         // first decide 2D or 3D
         // bool is3D = Random.Range(0, 2) == 1;
-
-        int randomValue = rand.Next(2);
-        if (randomValue == 0)
+        if (color == 0)
         {
             distractionPrefab = distractionPrefab1;
         }
@@ -145,10 +187,8 @@ public class TrialRunner:MonoBehaviour
         {
             distractionPrefab = distractionPrefab2;
         }
-        int[] possibleStimuliCount = { 1, 5, 10, 20 };
-        int randomIndex = rand.Next(possibleStimuliCount.Length);
-        int totalStimuli = possibleStimuliCount[randomIndex];
-        print(totalStimuli);
+        int totalStimuli = count;
+        //print(totalStimuli);
 
         bool is3D = true;
         var realCandidatePosition = is3D ? candidatePosition : candidatePosition2D;
@@ -182,7 +222,7 @@ public class TrialRunner:MonoBehaviour
                 Stimulus target = Instantiate(targetPrefabLocal,stimuliPositions[i]);
                 stimuliList.Add(target);
                 // set target direction randomly and set correctDirection
-                bool isRight = Random.Range(0, 2) == 1;
+                bool isRight = (hand == 0 ? false: true);
                 target.SetSphere(isRight);
                 correctDirection = isRight ? Direction.right : Direction.left;
             }
