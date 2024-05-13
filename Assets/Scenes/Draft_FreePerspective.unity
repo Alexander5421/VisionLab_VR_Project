@@ -3038,6 +3038,7 @@ MonoBehaviour:
   - stimuli_locs
   - TotolSetSize
   - trialType
+  - distractorType
   - userID
   - gender
   - age

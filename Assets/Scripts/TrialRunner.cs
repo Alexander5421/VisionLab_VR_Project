@@ -5,6 +5,7 @@ using System.Linq;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using Unity.XR.CoreUtils;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Debug = UnityEngine.Debug;
 using Random = UnityEngine.Random;
 
@@ -149,6 +150,7 @@ public class TrialRunner:MonoBehaviour
         entryInfo.respkeys = isRight ? "right" : "left";
         entryInfo.correctness = isRight == (correctDirection == Direction.right) ? "correct" : "incorrect";
         entryInfo.reactionTime = stopwatch.ElapsedMilliseconds.ToString();
+        entryInfo.distractorType = (distractionPrefab == distractionPrefab1) ? "Brown" : "White";
         if (isRight)
         {
             if (correctDirection == Direction.right)
@@ -238,7 +240,9 @@ public class TrialRunner:MonoBehaviour
         entryInfo = new EntryInfo();
         entryInfo.stimuli_locs = stimuliPositions.Select(arg => arg.GetSiblingIndex()).ToList();
         entryInfo.trialType = trialType;
-        entryInfo.condition = is3D ? 2 : 1;
+        Scene currentScene = SceneManager.GetActiveScene();
+        entryInfo.exp_name = currentScene.name;
+        entryInfo.distractorType = (distractionPrefab == distractionPrefab1) ? "Brown" : "White";
 
         stopwatch = new Stopwatch();
         stopwatch.Start();
