@@ -40,6 +40,8 @@ public class TrialRunner:MonoBehaviour
     private CSVLogger csvLogger;
     private System.Random rand = new System.Random();
     public List<(int, int, int)> ExperimentCombinations = new List<(int, int, int)>();
+    [SerializeField] public GameObject plane;
+    private Vector3 plane_normal;
 
     public void Awake()
     {
@@ -49,6 +51,31 @@ public class TrialRunner:MonoBehaviour
         string fileName = $"{DateTime.Now:yyyy-MM-dd-HH-mm-ss}";
         csvLogger.Initialize(fileName);
         InitializeInputs();
+        plane_normal =  plane.transform.TransformDirection(Vector3.up);
+        ProjectSpheresOntoPlane();
+    }
+
+    void ProjectSpheresOntoPlane()
+    {
+        // Get the normal vector of the plane
+        Vector3 planeNormal = plane.transform.up;
+
+        // Iterate through all spheres
+        foreach (Transform sphere in candidatePosition)
+        {
+            // Calculate the vector from the sphere's position to any point on the plane
+            Vector3 sphereToPlane = plane.transform.position - sphere.position;
+
+            // Calculate the signed distance from the sphere to the plane
+            float signedDistance = Vector3.Dot(sphereToPlane, planeNormal);
+
+            // Calculate the projected position of the sphere onto the plane
+            Vector3 projectedPosition = sphere.position + signedDistance * planeNormal;
+
+            // Set the sphere's position to the projected position
+            sphere.position = projectedPosition;
+            print(sphere.position);
+        }
     }
 
     public void InitilizeExperimentCombinations()
@@ -65,11 +92,14 @@ public class TrialRunner:MonoBehaviour
         ExperimentCombinations.Add((10, 0, 1));
         ExperimentCombinations.Add((10, 1, 0));
         ExperimentCombinations.Add((10, 1, 1));
-
-        ExperimentCombinations.Add((20, 0, 0));
-        ExperimentCombinations.Add((20, 0, 1));
-        ExperimentCombinations.Add((20, 1, 0));
-        ExperimentCombinations.Add((20, 1, 1));
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (! sceneName.Contains("10position"))
+        {
+            ExperimentCombinations.Add((20, 0, 0));
+            ExperimentCombinations.Add((20, 0, 1));
+            ExperimentCombinations.Add((20, 1, 0));
+            ExperimentCombinations.Add((20, 1, 1));
+        }
     }
 
     public static void Shuffle<T>(List<T> list)
@@ -124,8 +154,9 @@ public class TrialRunner:MonoBehaviour
 
     private void NewRun()
     {
+        int combinations = ExperimentCombinations.Count;
 
-        if (currRunIndex % 14 ==0)
+        if (currRunIndex % combinations == 0)
         {
             Shuffle(ExperimentCombinations);
             print("New trial");
@@ -133,7 +164,7 @@ public class TrialRunner:MonoBehaviour
 
         if (currRunIndex < totalRunCount)
         {
-            StartNewRun(ExperimentCombinations[currRunIndex%14].Item1, ExperimentCombinations[currRunIndex%14].Item2, ExperimentCombinations[currRunIndex%14].Item3);
+            StartNewRun(ExperimentCombinations[currRunIndex% combinations].Item1, ExperimentCombinations[currRunIndex%combinations].Item2, ExperimentCombinations[currRunIndex%combinations].Item3);
         }
         else
         {
