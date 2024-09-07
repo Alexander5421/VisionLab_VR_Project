@@ -74,7 +74,7 @@ public class TrialRunner:MonoBehaviour
 
             // Set the sphere's position to the projected position
             sphere.position = projectedPosition;
-            print(sphere.position);
+            //print(sphere.position);
         }
     }
 

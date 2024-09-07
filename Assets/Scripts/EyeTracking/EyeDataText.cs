@@ -11,6 +11,7 @@ public class EyeDataText : MonoBehaviour
     public InputActionReference gazeInput;
     public InputActionAsset actionAsset;
     public TextMeshProUGUI text;
+    public GameObject GazePlane;
     // Start is called before the first frame update
     bool IsTracked(InputActionReference actionReference)
     {
@@ -82,10 +83,21 @@ public class EyeDataText : MonoBehaviour
         if (tracked)
         {
             var pose = gazeInput.action.ReadValue<UnityEngine.XR.OpenXR.Input.Pose>();
-            var rotation = pose.rotation*Vector3.forward;
-            var pos = pose.position;
-            eyeDataInfo = "Rotation: " + rotation + "\n" +
-                "Position: " + pos + "\n";
+            var gazeDirection = pose.rotation*Vector3.forward;
+            var gazeOrigin = pose.position;
+            Ray gazeRay = new Ray(gazeOrigin, gazeDirection);
+            if (Physics.Raycast(gazeRay, out RaycastHit hit))
+            {
+                if (hit!.collider != null && hit.collider.gameObject == GazePlane)
+                {
+                    Vector3 hitPosition = hit.point;
+                    print("Gaze at " + hitPosition);
+                }
+            }
+            eyeDataInfo = "GazeDirection: " + gazeDirection + "\n" +
+                "GazeOrigin: " + gazeOrigin + "\n";
+            //Debug.DrawRay(gazeOrigin, gazeDirection*10.0f, Color.red);
+            //Need Fixation point
         }
         else
         {
