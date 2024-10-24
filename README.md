@@ -1,1 +1,1 @@
-This is the repo for VR eyetracking projects.
+This is the up-to-date repo for VR eyetracking projects.
