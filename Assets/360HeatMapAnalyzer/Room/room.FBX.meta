@@ -1,0 +1,274 @@
+fileFormatVersion: 2
+guid: 1754a3592f617de45bbeed66029ae7c2
+timeCreated: 1517829273
+licenseType: Store
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: room_MeshPart0
+    100004: room_MeshPart1
+    100006: room_MeshPart10
+    100008: room_MeshPart11
+    100010: room_MeshPart2
+    100012: room_MeshPart3
+    100014: room_MeshPart4
+    100016: room_MeshPart5
+    100018: room_MeshPart6
+    100020: room_MeshPart7
+    100022: room_MeshPart8
+    100024: room_MeshPart9
+    100026: Room_Curtains_002
+    100028: Room_Curtains_01
+    100030: Room_Lamps
+    100032: Room_Lamps_MeshPart0
+    100034: Room_Lamps_MeshPart1
+    100036: Room_Lamps_MeshPart2
+    100038: Room_Objects
+    100040: Room_Objects_MeshPart0
+    100042: Room_Objects_MeshPart1
+    100044: Room_Sofa_01
+    100046: Room_Sofa_01_MeshPart0
+    100048: Room_Sofa_01_MeshPart1
+    100050: Room_Sofa_01_MeshPart2
+    100052: Room_Sofa_01_MeshPart3
+    100054: Room_Sofa_01_MeshPart4
+    100056: Room_Sofa_02
+    100058: Room_Sofa_02_MeshPart0
+    100060: Room_Sofa_02_MeshPart1
+    100062: Room_Sofa_02_MeshPart2
+    100064: Room_Sofa_02_MeshPart3
+    100066: Room_Sofa_02_MeshPart4
+    100068: Room_TV
+    100070: Room_Walls
+    100072: Room_Curtains_left
+    100074: Room_Curtains_right
+    100076: Room_Sofa_A
+    100078: Room_Sofa_B
+    400000: //RootNode
+    400002: room_MeshPart0
+    400004: room_MeshPart1
+    400006: room_MeshPart10
+    400008: room_MeshPart11
+    400010: room_MeshPart2
+    400012: room_MeshPart3
+    400014: room_MeshPart4
+    400016: room_MeshPart5
+    400018: room_MeshPart6
+    400020: room_MeshPart7
+    400022: room_MeshPart8
+    400024: room_MeshPart9
+    400026: Room_Curtains_002
+    400028: Room_Curtains_01
+    400030: Room_Lamps
+    400032: Room_Lamps_MeshPart0
+    400034: Room_Lamps_MeshPart1
+    400036: Room_Lamps_MeshPart2
+    400038: Room_Objects
+    400040: Room_Objects_MeshPart0
+    400042: Room_Objects_MeshPart1
+    400044: Room_Sofa_01
+    400046: Room_Sofa_01_MeshPart0
+    400048: Room_Sofa_01_MeshPart1
+    400050: Room_Sofa_01_MeshPart2
+    400052: Room_Sofa_01_MeshPart3
+    400054: Room_Sofa_01_MeshPart4
+    400056: Room_Sofa_02
+    400058: Room_Sofa_02_MeshPart0
+    400060: Room_Sofa_02_MeshPart1
+    400062: Room_Sofa_02_MeshPart2
+    400064: Room_Sofa_02_MeshPart3
+    400066: Room_Sofa_02_MeshPart4
+    400068: Room_TV
+    400070: Room_Walls
+    400072: Room_Curtains_left
+    400074: Room_Curtains_right
+    400076: Room_Sofa_A
+    400078: Room_Sofa_B
+    2300000: room_MeshPart0
+    2300002: room_MeshPart1
+    2300004: room_MeshPart10
+    2300006: room_MeshPart11
+    2300008: room_MeshPart2
+    2300010: room_MeshPart3
+    2300012: room_MeshPart4
+    2300014: room_MeshPart5
+    2300016: room_MeshPart6
+    2300018: room_MeshPart7
+    2300020: room_MeshPart8
+    2300022: room_MeshPart9
+    2300024: Room_Curtains_002
+    2300026: Room_Curtains_01
+    2300028: Room_Lamps_MeshPart0
+    2300030: Room_Lamps_MeshPart1
+    2300032: Room_Lamps_MeshPart2
+    2300034: Room_Objects_MeshPart0
+    2300036: Room_Objects_MeshPart1
+    2300038: Room_Sofa_01_MeshPart0
+    2300040: Room_Sofa_01_MeshPart1
+    2300042: Room_Sofa_01_MeshPart2
+    2300044: Room_Sofa_01_MeshPart3
+    2300046: Room_Sofa_01_MeshPart4
+    2300048: Room_Sofa_02_MeshPart0
+    2300050: Room_Sofa_02_MeshPart1
+    2300052: Room_Sofa_02_MeshPart2
+    2300054: Room_Sofa_02_MeshPart3
+    2300056: Room_Sofa_02_MeshPart4
+    2300058: Room_TV
+    2300060: Room_Walls
+    2300062: //RootNode
+    2300064: Room_Curtains_left
+    2300066: Room_Curtains_right
+    2300068: Room_Lamps
+    2300070: Room_Sofa_A
+    2300072: Room_Sofa_B
+    3300000: room_MeshPart0
+    3300002: room_MeshPart1
+    3300004: room_MeshPart10
+    3300006: room_MeshPart11
+    3300008: room_MeshPart2
+    3300010: room_MeshPart3
+    3300012: room_MeshPart4
+    3300014: room_MeshPart5
+    3300016: room_MeshPart6
+    3300018: room_MeshPart7
+    3300020: room_MeshPart8
+    3300022: room_MeshPart9
+    3300024: Room_Curtains_002
+    3300026: Room_Curtains_01
+    3300028: Room_Lamps_MeshPart0
+    3300030: Room_Lamps_MeshPart1
+    3300032: Room_Lamps_MeshPart2
+    3300034: Room_Objects_MeshPart0
+    3300036: Room_Objects_MeshPart1
+    3300038: Room_Sofa_01_MeshPart0
+    3300040: Room_Sofa_01_MeshPart1
+    3300042: Room_Sofa_01_MeshPart2
+    3300044: Room_Sofa_01_MeshPart3
+    3300046: Room_Sofa_01_MeshPart4
+    3300048: Room_Sofa_02_MeshPart0
+    3300050: Room_Sofa_02_MeshPart1
+    3300052: Room_Sofa_02_MeshPart2
+    3300054: Room_Sofa_02_MeshPart3
+    3300056: Room_Sofa_02_MeshPart4
+    3300058: Room_TV
+    3300060: Room_Walls
+    3300062: //RootNode
+    3300064: Room_Curtains_left
+    3300066: Room_Curtains_right
+    3300068: Room_Lamps
+    3300070: Room_Sofa_A
+    3300072: Room_Sofa_B
+    4300000: room_MeshPart0
+    4300002: room_MeshPart1
+    4300004: room_MeshPart2
+    4300006: room_MeshPart3
+    4300008: room_MeshPart4
+    4300010: room_MeshPart5
+    4300012: room_MeshPart6
+    4300014: room_MeshPart7
+    4300016: room_MeshPart8
+    4300018: room_MeshPart9
+    4300020: room_MeshPart10
+    4300022: room_MeshPart11
+    4300024: Room_Walls
+    4300026: Room_Sofa_01_MeshPart0
+    4300028: Room_Sofa_01_MeshPart1
+    4300030: Room_Sofa_01_MeshPart2
+    4300032: Room_Sofa_01_MeshPart3
+    4300034: Room_Sofa_01_MeshPart4
+    4300036: Room_Lamps_MeshPart0
+    4300038: Room_Lamps_MeshPart1
+    4300040: Room_Lamps_MeshPart2
+    4300042: Room_TV
+    4300044: Room_Curtains_01
+    4300046: Room_Objects_MeshPart0
+    4300048: Room_Objects_MeshPart1
+    4300050: Room_Lamps
+    4300052: Room_Curtains_right
+    4300054: Room_Sofa_B
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: White
+    second: {fileID: 2100000, guid: 491c74f9eb28a2f4faf3fd396389109c, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

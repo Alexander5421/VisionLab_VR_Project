@@ -11,6 +11,7 @@ using Random = UnityEngine.Random;
 
 public class TrialRunner:MonoBehaviour
 {
+    public bool ProjectOntoPlane = true;
     public enum Direction
     {
         left,
@@ -43,6 +44,7 @@ public class TrialRunner:MonoBehaviour
     [SerializeField] public GameObject plane;
     private Vector3 plane_normal;
 
+
     public void Awake()
     {
         this.enabled = false;
@@ -52,7 +54,10 @@ public class TrialRunner:MonoBehaviour
         csvLogger.Initialize(fileName);
         InitializeInputs();
         plane_normal =  plane.transform.TransformDirection(Vector3.up);
-        ProjectSpheresOntoPlane();
+        if (ProjectOntoPlane == true )
+        {
+            ProjectSpheresOntoPlane();
+        }
     }
 
     void ProjectSpheresOntoPlane()

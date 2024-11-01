@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,7 +13,22 @@ public class EyeDataText : MonoBehaviour
     public InputActionAsset actionAsset;
     public TextMeshProUGUI text;
     public GameObject GazePlane;
-    // Start is called before the first frame update
+
+    private string filePath;
+
+    private void Start()
+    {
+        // Define the file path to the Assets/UntrackData_Eye folder
+        filePath = Path.Combine(Application.dataPath, "UntrackData_Eye", "EyeGazeData.csv");
+
+        // Check if the file exists, if not, write headers
+        if (!File.Exists(filePath))
+        {
+            File.WriteAllText(filePath, "Timestamp,GazeOriginX,GazeOriginY,GazeOriginZ,GazeDirectionX,GazeDirectionY,GazeDirectionZ\n");
+        }
+    }
+
+
     bool IsTracked(InputActionReference actionReference)
     {
         bool tracked = false;
@@ -28,7 +44,7 @@ public class EyeDataText : MonoBehaviour
         {
             Debug.Log(value);
         }
-        
+
         return tracked;
     }
     bool getTracked(InputActionReference actionReference)
@@ -40,13 +56,13 @@ public class EyeDataText : MonoBehaviour
 #if USE_INPUT_SYSTEM_POSE_CONTROL // Scripting Define Symbol added by using OpenXR Plugin 1.6.0.
             if (actionReference.action.activeControl.valueType == typeof(UnityEngine.InputSystem.XR.PoseState))
 #else
-                if (actionReference.action.activeControl.valueType == typeof(UnityEngine.XR.OpenXR.Input.Pose))
+            if (actionReference.action.activeControl.valueType == typeof(UnityEngine.XR.OpenXR.Input.Pose))
 #endif
             {
 #if USE_INPUT_SYSTEM_POSE_CONTROL // Scripting Define Symbol added by using OpenXR Plugin 1.6.0.
                 tracked = actionReference.action.ReadValue<UnityEngine.InputSystem.XR.PoseState>().isTracked;
 #else
-                    tracked = actionReference.action.ReadValue<UnityEngine.XR.OpenXR.Input.Pose>().isTracked;
+                tracked = actionReference.action.ReadValue<UnityEngine.XR.OpenXR.Input.Pose>().isTracked;
 #endif
             }
         }
@@ -67,7 +83,7 @@ public class EyeDataText : MonoBehaviour
         // enable gaze input
         actionAsset.Enable();
     }
-    
+
     private void OnDisable()
     {
         // disable gaze input
@@ -79,25 +95,31 @@ public class EyeDataText : MonoBehaviour
     {
         bool tracked = getTracked(gazeInput);
         string eyeDataInfo = "";
-        // get rotation position velocity and angular velocity
         if (tracked)
         {
             var pose = gazeInput.action.ReadValue<UnityEngine.XR.OpenXR.Input.Pose>();
-            var gazeDirection = pose.rotation*Vector3.forward;
+            var gazeDirection = pose.rotation * Vector3.forward;
             var gazeOrigin = pose.position;
+
             Ray gazeRay = new Ray(gazeOrigin, gazeDirection);
             if (Physics.Raycast(gazeRay, out RaycastHit hit))
             {
-                if (hit!.collider != null && hit.collider.gameObject == GazePlane)
+                if (hit.collider != null && hit.collider.gameObject == GazePlane)
                 {
                     Vector3 hitPosition = hit.point;
                     print("Gaze at " + hitPosition);
                 }
             }
             eyeDataInfo = "GazeDirection: " + gazeDirection + "\n" +
-                "GazeOrigin: " + gazeOrigin + "\n";
-            //Debug.DrawRay(gazeOrigin, gazeDirection*10.0f, Color.red);
-            //Need Fixation point
+                          "GazeOrigin: " + gazeOrigin + "\n";
+
+            // Write data to CSV file
+            string timestamp = DateTime.UtcNow.ToString("o"); // ISO 8601 format for timestamp
+            string dataLine = $"{timestamp},{gazeOrigin.x},{gazeOrigin.y},{gazeOrigin.z}," +
+                              $"{gazeDirection.x},{gazeDirection.y},{gazeDirection.z}\n";
+            File.AppendAllText(filePath, dataLine);
+
+            Debug.DrawRay(gazeOrigin, gazeDirection * 10.0f, Color.red);
         }
         else
         {
