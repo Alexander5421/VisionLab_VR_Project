@@ -3434,6 +3434,7 @@ MonoBehaviour:
     type: 3}
   text: {fileID: 771351879}
   GazePlane: {fileID: 1185581631}
+  runner: {fileID: 944144198}
 --- !u!222 &771351881
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4706,6 +4707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0802566e4d420f91c1e8accc6fbca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ProjectOntoPlane: 0
   targetPrefab: {fileID: 7274364224765013079, guid: 114e7e3bf4b139b439e6705da77eb277,
     type: 3}
   distractionPrefab1: {fileID: 1880715859106046713, guid: a61b2361aa8473d45b50191d6558d91c,
@@ -8066,6 +8068,7 @@ MonoBehaviour:
     type: 3}
   text: {fileID: 1559108530}
   GazePlane: {fileID: 0}
+  runner: {fileID: 0}
 --- !u!1 &1560938694
 GameObject:
   m_ObjectHideFlags: 0

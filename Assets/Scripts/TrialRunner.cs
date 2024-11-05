@@ -60,6 +60,11 @@ public class TrialRunner:MonoBehaviour
         }
     }
 
+    public string GetExperimentInfo()
+    {
+        return  trialType + " " + currRunIndex.ToString() + "/" + totalRunCount.ToString();
+    }
+
     void ProjectSpheresOntoPlane()
     {
         // Get the normal vector of the plane

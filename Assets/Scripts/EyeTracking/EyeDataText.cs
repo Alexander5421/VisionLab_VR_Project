@@ -13,6 +13,7 @@ public class EyeDataText : MonoBehaviour
     public InputActionAsset actionAsset;
     public TextMeshProUGUI text;
     public GameObject GazePlane;
+    public GameObject runner;
 
     private string filePath;
 
@@ -24,7 +25,7 @@ public class EyeDataText : MonoBehaviour
         // Check if the file exists, if not, write headers
         if (!File.Exists(filePath))
         {
-            File.WriteAllText(filePath, "Timestamp,GazeOriginX,GazeOriginY,GazeOriginZ,GazeDirectionX,GazeDirectionY,GazeDirectionZ\n");
+            File.WriteAllText(filePath, "Timestamp,ExperimentType,TrialID,GazeOriginX,GazeOriginY,GazeOriginZ,GazeDirectionX,GazeDirectionY,GazeDirectionZ\n");
         }
     }
 
@@ -112,12 +113,17 @@ public class EyeDataText : MonoBehaviour
             }
             eyeDataInfo = "GazeDirection: " + gazeDirection + "\n" +
                           "GazeOrigin: " + gazeOrigin + "\n";
-
+            string experiment_info = runner.GetComponent<TrialRunner>().GetExperimentInfo();
+            string[] parts = experiment_info.Split(new[] { ' ' }, StringSplitOptions.None);
             // Write data to CSV file
-            string timestamp = DateTime.UtcNow.ToString("o"); // ISO 8601 format for timestamp
-            string dataLine = $"{timestamp},{gazeOrigin.x},{gazeOrigin.y},{gazeOrigin.z}," +
-                              $"{gazeDirection.x},{gazeDirection.y},{gazeDirection.z}\n";
-            File.AppendAllText(filePath, dataLine);
+            if (parts[0] != null && parts[0] != "")
+            {
+                string timestamp = DateTime.UtcNow.ToString("o"); // ISO 8601 format for timestamp
+                string dataLine = $"{timestamp},{parts[0]},{parts[1]},{gazeOrigin.x},{gazeOrigin.y},{gazeOrigin.z}," +
+                                   $"{gazeDirection.x},{gazeDirection.y},{gazeDirection.z}\n";
+                File.AppendAllText(filePath, dataLine);
+            }
+            
 
             Debug.DrawRay(gazeOrigin, gazeDirection * 10.0f, Color.red);
         }
